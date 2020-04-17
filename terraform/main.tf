@@ -1,5 +1,9 @@
 provider "azurerm" {
-  version = "=2.6.0"
+  version         = "=2.6.0"
+  # subscription_id = var.subscription_id
+  # client_id       = var.client_id
+  # client_secret   = var.client_secret
+  # tenant_id       = var.tenant_id
   features {
     key_vault {
       recover_soft_deleted_key_vaults = true # (Optional) Should the azurerm_key_vault resource recover a Key Vault which has previously been Soft Deleted? Defaults to true.
@@ -15,12 +19,7 @@ provider "azurerm" {
 }
 
 terraform {
-  backend "azurerm" {
-    storage_account_name  = "${var.storage_account_name}"
-    container_name        = "k8sgitops"
-    key                   = "terraform.tfstate"
-    access_key            = "${var.access_key}"
-  }
+  backend "azurerm" {}
 }
 
 # provider "azuread" {
