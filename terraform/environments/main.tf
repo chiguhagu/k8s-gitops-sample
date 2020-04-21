@@ -27,7 +27,7 @@ provider "random" {
 }
 
 module "mo_resource_group_all" {
-  source = "../../modules/resource_group"
+  source = "../modules/resource_group"
 
   name        = "${var.prefix}-all"
   location    = "${var.primary_location}"
@@ -37,7 +37,7 @@ module "mo_resource_group_all" {
 # Logging Resources
 
 module "mo_log_analytics_workspace_logs" {
-  source = "../../modules/log_analytics_workspace"
+  source = "../modules/log_analytics_workspace"
 
   name                = "${var.prefix}log"
   resource_group_name = "${module.mo_resource_group_all.name}"
@@ -46,7 +46,7 @@ module "mo_log_analytics_workspace_logs" {
 }
 
 module "mo_storage_account_logs" {
-  source = "../../modules/storage_account"
+  source = "../modules/storage_account"
   
   name                = "${var.prefix}log"
   resource_group_name = "${module.mo_resource_group_all.name}"
@@ -62,7 +62,7 @@ module "mo_storage_account_logs" {
 # AKS Resources
 
 module "mo_virtual_network_all" {
-  source = "../../modules/virtual_network"
+  source = "../modules/virtual_network"
 
   name                        = "${var.prefix}all"
   resource_group_name         = "${module.mo_resource_group_all.name}"
@@ -72,7 +72,7 @@ module "mo_virtual_network_all" {
 }
 
 module "mo_subnet_aks" {
-  source = "../../modules/subnet"
+  source = "../modules/subnet"
   
   name                  = "15.1.0.0_16"
   address_prefix        = "15.1.0.0/16"
@@ -81,7 +81,7 @@ module "mo_subnet_aks" {
 }
 
 module "mo_nsg_aks" {
-  source = "../../modules/network_security_group"
+  source = "../modules/network_security_group"
 
   name                        = "${var.prefix}aks"
   location                    = "${module.mo_resource_group_all.location}"
@@ -92,7 +92,7 @@ module "mo_nsg_aks" {
 }
 
 module "mo_kubernetes_cluster_aks" {
-  source = "../../modules/kubernetes_cluster"
+  source = "../modules/kubernetes_cluster"
   
   name                = "${var.prefix}aks"
   location            = "${module.mo_resource_group_all.location}"
