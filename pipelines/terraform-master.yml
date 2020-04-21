@@ -1,10 +1,11 @@
-pr:
+trigger:
   branches:
     include:
     - master
   paths:
     include:
     - terraform/*
+    - pipelines/terraform-master.yml
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -24,5 +25,5 @@ steps:
     export ARM_TENANT_ID=$(SP_TENANT_ID)
     cd terraform
     terraform init -backend-config "storage_account_name=$(TF_STORAGE_ACCOUNT_NAME)" -backend-config "container_name=$(TF_CONTAINER_NAME)" -backend-config "key=$(TF_KEY)" -backend-config "access_key=$(TF_ACCESS_KEY)"
-    terraform plan
-  displayName: 'Terraform Plan'
+    terraform apply
+  displayName: 'Terraform Apply'
