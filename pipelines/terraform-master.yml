@@ -7,6 +7,8 @@ trigger:
     - terraform/*
     - pipelines/terraform-master.yml
 
+pr: none
+
 pool:
   vmImage: 'ubuntu-latest'
 
