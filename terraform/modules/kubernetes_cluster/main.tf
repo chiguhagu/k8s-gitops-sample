@@ -56,7 +56,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   # api_server_authorized_ip_ranges {}
   # enable_pod_security_policy {}
 
-  kubernetes_version = "1.17.0"
+  kubernetes_version = "1.16.7"
 
   # # I don't want to use this section
   # linux_profile {}
