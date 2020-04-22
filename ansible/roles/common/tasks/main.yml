@@ -1,0 +1,26 @@
+- name: Use kubeconfi context
+  shell:
+    cmd: kubectl config use-context {{ azure_aks_name }}
+  register: return_from_shell
+
+- name: Show previous stdout
+  debug:
+    msg: "{{ return_from_shell.stdout }}"
+
+- name: Get Namespace
+  shell:
+    cmd: kubectl get ns
+  register: return_from_shell
+
+- name: Show previous stdout
+  debug:
+    msg: "{{ return_from_shell.stdout }}"
+
+- name: Check istioctl version
+  shell:
+    cmd: istioctl version --remote=false
+  register: return_from_shell
+
+- name: Show previous stdout
+  debug:
+    msg: "{{ return_from_shell.stdout }}"
