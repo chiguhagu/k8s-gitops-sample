@@ -15,3 +15,12 @@
 - name: Show previous stdout
   debug:
     msg: "{{ return_from_shell.stdout }}"
+
+- name: Check istioctl version
+  shell:
+    cmd: istioctl version --remote=false
+  register: return_from_shell
+
+- name: Show previous stdout
+  debug:
+    msg: "{{ return_from_shell.stdout }}"

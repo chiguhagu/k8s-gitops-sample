@@ -26,4 +26,4 @@ steps:
     export AZURE_AKS_NAME=$(AZURE_AKS_NAME)
     ansible-playbook -i hosts site.yml --syntax-check
     ansible-playbook -i hosts site.yml
-  displayName: 'ansible '
+  displayName: 'Execute Playbook'
